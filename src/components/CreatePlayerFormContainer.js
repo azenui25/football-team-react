@@ -6,7 +6,7 @@ import PlayerForm from "./PlayerForm";
 class CreatePlayerFormContainer extends React.Component {
   state = {
     name: "",
-    number:""
+    number: ""
   };
 
   onChange = event => {
@@ -27,7 +27,6 @@ class CreatePlayerFormContainer extends React.Component {
       number: ""
     });
   };
-
 
   render() {
     return (
