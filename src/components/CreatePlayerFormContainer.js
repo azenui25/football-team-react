@@ -1,11 +1,12 @@
 import React from "react";
 import { connect } from "react-redux";
-import { createTeam } from "../actions/teams";
-import TeamForm from "./TeamForm";
+import { createPlayer } from "../actions/players";
+import PlayerForm from "./PlayerForm";
 
-class CreateTeamFormContainer extends React.Component {
+class CreatePlayerFormContainer extends React.Component {
   state = {
-    name: ""
+    name: "",
+    number:""
   };
 
   onChange = event => {
@@ -15,17 +16,22 @@ class CreateTeamFormContainer extends React.Component {
   };
 
   onSubmit = event => {
-    console.table(this.state)
+    console.table(this.state);
     event.preventDefault();
-    this.props.createTeam(this.state);
+    this.props.createPlayer({
+      ...this.state,
+      teamId: this.props.teamId
+    });
     this.setState({
-      name: ""
+      name: "",
+      number: ""
     });
   };
 
+
   render() {
     return (
-      <TeamForm
+      <PlayerForm
         onSubmit={this.onSubmit}
         onChange={this.onChange}
         values={this.state}
@@ -36,5 +42,5 @@ class CreateTeamFormContainer extends React.Component {
 
 export default connect(
   null,
-  { createTeam }
-)(CreateTeamFormContainer);
+  { createPlayer }
+)(CreatePlayerFormContainer);
